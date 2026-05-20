@@ -1,0 +1,474 @@
+.dashboard {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #DDDDDD;
+}
+
+.filesContainer {
+    border-radius: 27px;
+    padding: 20px;
+    min-height: 400px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.filesContainer.dragOver {
+    background: rgba(74, 158, 255, 0.2);
+    border: 2px dashed #37B6CE;
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+}
+
+.filesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.selectionToolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.selectedCount {
+    font-weight: 600;
+    color: #DDDDDD;
+    min-width: 140px;
+}
+
+.toolbarBtn {
+    background: none;
+    border: none;
+    border-radius: 100%;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbarBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.toolbarBtn.del img {
+    width: 15px;
+    height: 15px;
+}
+
+.toolbarBtn:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.toolbarBtn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toolbarBtn:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltipText {
+    visibility: hidden;
+    font-size: 10px;
+    width: 100px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #DDDDDD;
+    text-align: center;
+    padding: 6px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 145%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.filesTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: #DDDDDD;
+}
+
+.filesTable th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    color: #37B6CE;
+}
+
+.filesTable td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.iconCell {
+    width: 50px;
+    text-align: center;
+}
+
+.nameCell {
+    max-width: 300px;
+}
+
+.sizeCell {
+    width: 100px;
+}
+
+.dateCell {
+    width: 120px;
+}
+
+.actionsCell {
+    width: 50px;
+    text-align: center;
+}
+
+.fileManagerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.emptyFolder {
+    text-align: center;
+    font-weight: 500;
+    padding: 50px;
+    color: #DDDDDD;
+}
+
+.emptyIcon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.emptyIcon img {
+    width: 80px;
+    height: 80px;
+    -webkit-user-drag: none;
+}
+
+.dragHint {
+    font-size: 14px;
+    color: #aeaeae;
+    margin-top: 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    color: #DDDDDD;
+}
+
+/* Загрузка */
+.uploadOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+.uploadSpinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #4a9eff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.filesGrid,
+.filesTable,
+:global(.file-item),
+:global(.file-row) {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.fileName {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.filesTable td {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filesGrid>* {
+    animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+    .dashboard {
+        padding: 0 15px;
+    }
+
+    .filesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+    }
+
+    .selectionToolbar {
+        padding: 0 15px;
+        gap: 12px;
+    }
+
+    .selectedCount {
+        min-width: 120px;
+        font-size: 14px;
+    }
+
+    .dateCell {
+        width: 100px;
+    }
+
+    .sizeCell {
+        width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 0 12px;
+    }
+
+    .filesContainer {
+        padding: 15px;
+    }
+
+    .filesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+    }
+
+    .selectionToolbar {
+        padding: 8px 12px;
+        gap: 10px;
+        border-radius: 20px;
+    }
+
+    .selectedCount {
+        min-width: 100px;
+        font-size: 12px;
+    }
+
+    .toolbarBtn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .toolbarBtn img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .toolbarBtn.del img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .fileManagerHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dateCell {
+        display: none;
+    }
+
+    .sizeCell {
+        width: 70px;
+    }
+
+    .filesTable th,
+    .filesTable td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .iconCell {
+        width: 40px;
+    }
+
+    .nameCell {
+        max-width: 150px;
+    }
+
+    .emptyIcon img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .emptyFolder p {
+        font-size: 14px;
+    }
+
+    .dragHint {
+        font-size: 12px;
+    }
+
+    .tooltipText {
+        font-size: 9px;
+        width: 80px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 425px) {
+    .dashboard {
+        padding: 0 10px;
+    }
+
+    .filesContainer {
+        padding: 10px;
+    }
+
+    .filesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 8px;
+    }
+
+    .selectionToolbar {
+        padding: 6px 10px;
+        gap: 8px;
+    }
+
+    .selectedCount {
+        min-width: 80px;
+        font-size: 11px;
+    }
+
+    .toolbarBtn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .toolbarBtn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .toolbarBtn.del img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .sizeCell {
+        display: none;
+    }
+
+    .filesTable th,
+    .filesTable td {
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    .iconCell {
+        width: 35px;
+    }
+
+    .nameCell {
+        max-width: 120px;
+    }
+
+    .emptyIcon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .emptyFolder {
+        padding: 30px;
+    }
+
+    .emptyFolder p {
+        font-size: 13px;
+    }
+
+    .dragHint {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 375px) {
+    .filesGrid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 6px;
+    }
+
+    .selectedCount {
+        min-width: 70px;
+        font-size: 10px;
+    }
+
+    .toolbarBtn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nameCell {
+        max-width: 100px;
+    }
+
+    .emptyIcon img {
+        width: 40px;
+        height: 40px;
+    }
+}

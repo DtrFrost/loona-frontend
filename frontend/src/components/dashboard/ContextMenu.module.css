@@ -1,0 +1,120 @@
+.contextMenu {
+    position: fixed;
+    background: rgba(45, 45, 45, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 180px;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contextMenuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    color: #DDDDDD;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid rgba(221, 221, 221, 0.1);
+}
+
+.contextMenuItem:last-child {
+    border-bottom: none;
+}
+
+.contextMenuItem img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.delete {
+    color: #ff6666;
+}
+
+.delete img {
+    width: 16px;
+    height: 16px;
+}
+
+.contextMenuItem:hover {
+    background: rgba(57, 186, 209, 0.2);
+}
+
+.contextMenuItem.delete:hover {
+    background: rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+}
+
+.contextMenuItem:hover img {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .contextMenu {
+        min-width: 160px;
+        border-radius: 10px;
+    }
+
+    .contextMenuItem {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .contextMenuItem img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .delete img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 425px) {
+    .contextMenu {
+        min-width: 140px;
+        border-radius: 8px;
+    }
+
+    .contextMenuItem {
+        padding: 10px 12px;
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .contextMenuItem img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .delete img {
+        width: 12px;
+        height: 12px;
+    }
+}

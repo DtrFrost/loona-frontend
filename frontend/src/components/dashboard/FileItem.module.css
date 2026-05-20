@@ -1,0 +1,333 @@
+.fileItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fileItem.selected {
+    background-color: rgba(55, 182, 206, 0.3);
+    border-color: #37B6CE;
+    box-shadow: 0 0 0 1px #37B6CE;
+}
+
+.fileItem:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.previewContainer {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.fileActionsBtn {
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: #DDDDDD;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    border: none;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0;
+    z-index: 10;
+}
+
+.fileItem:hover .fileActionsBtn {
+    opacity: 0.8;
+}
+
+.fileActionsBtn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.previewActions {
+    opacity: 0.8;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background: #DDDDDD;
+    border-radius: 50%;
+}
+
+.fileInfo {
+    width: 100%;
+    min-width: 0;
+}
+
+.fileName {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fileSize {
+    font-size: 11px;
+    color: #AAAAAA;
+}
+
+.fileRow {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fileRow:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.fileRow.selected {
+    background-color: rgba(55, 182, 206, 0.15);
+}
+
+.iconCell {
+    width: 50px;
+    text-align: center;
+    padding: 12px;
+}
+
+.nameCell {
+    max-width: 300px;
+    padding: 12px;
+}
+
+.nameCell .fileName {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.sizeCell {
+    width: 100px;
+    padding: 12px;
+    font-size: 13px;
+    color: #BBBBBB;
+}
+
+.dateCell {
+    width: 120px;
+    padding: 12px;
+    font-size: 13px;
+    color: #BBBBBB;
+}
+
+.actionsCell {
+    width: 50px;
+    text-align: center;
+    padding: 12px;
+}
+
+.tableActionsBtn {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: #DDDDDD;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    border: none;
+    margin: 0 auto;
+}
+
+.tableActionsBtn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.tableActionsBtn .dot {
+    width: 3px;
+    height: 3px;
+}
+
+@media (max-width: 1024px) {
+    .fileItem {
+        padding: 14px;
+    }
+
+    .fileName {
+        font-size: 13px;
+    }
+
+    .nameCell {
+        max-width: 250px;
+    }
+
+    .sizeCell {
+        width: 90px;
+    }
+
+    .dateCell {
+        width: 110px;
+    }
+
+    .previewContainer {
+        height: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fileItem {
+        padding: 12px;
+    }
+
+    .fileName {
+        font-size: 12px;
+    }
+
+    .fileSize {
+        font-size: 10px;
+    }
+
+    .fileActionsBtn {
+        padding: 4px 8px;
+        opacity: 0.6;
+    }
+
+    .fileActionsBtn .dot {
+        width: 3px;
+        height: 3px;
+    }
+
+    .dateCell {
+        display: none;
+    }
+
+    .sizeCell {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .nameCell {
+        max-width: 200px;
+    }
+
+    .nameCell .fileName {
+        font-size: 13px;
+    }
+
+    .iconCell {
+        width: 45px;
+        padding: 10px;
+    }
+
+    .actionsCell {
+        width: 45px;
+        padding: 10px;
+    }
+
+    .previewContainer {
+        height: 100px;
+    }
+}
+
+@media (max-width: 425px) {
+    .fileItem {
+        padding: 10px;
+    }
+
+    .fileName {
+        font-size: 11px;
+    }
+
+    .fileSize {
+        font-size: 9px;
+    }
+
+    .fileActionsBtn {
+        padding: 3px 6px;
+        top: 4px;
+        right: 4px;
+    }
+
+    .fileActionsBtn .dot {
+        width: 2px;
+        height: 2px;
+    }
+
+    .sizeCell {
+        display: none;
+    }
+
+    .nameCell {
+        max-width: 150px;
+    }
+
+    .nameCell .fileName {
+        font-size: 12px;
+    }
+
+    .iconCell {
+        width: 40px;
+        padding: 8px;
+    }
+
+    .actionsCell {
+        width: 40px;
+        padding: 8px;
+    }
+
+    .previewContainer {
+        height: 85px;
+    }
+}
+
+@media (max-width: 375px) {
+    .nameCell {
+        max-width: 120px;
+    }
+
+    .nameCell .fileName {
+        font-size: 11px;
+    }
+
+    .previewContainer {
+        height: 75px;
+    }
+}
+
+@keyframes selectPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(55, 182, 206, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 2px rgba(55, 182, 206, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(55, 182, 206, 0);
+    }
+}
+
+.fileItem.selected {
+    animation: selectPulse 0.3s ease;
+}

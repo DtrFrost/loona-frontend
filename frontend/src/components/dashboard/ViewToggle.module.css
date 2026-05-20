@@ -1,0 +1,131 @@
+.viewToggle {
+    display: flex;
+    gap: 6px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+}
+
+.viewToggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #DDDDDD;
+    transition: all 0.2s ease;
+    font-size: 12px;
+    font-weight: 500;
+    gap: 8px;
+}
+
+.viewToggleBtn img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.viewToggleBtn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.viewToggleBtn:hover img {
+    opacity: 1;
+}
+
+.viewToggleBtn.active {
+    background-color: #37B6CE;
+    color: white;
+}
+
+.viewToggleBtn.active img {
+    opacity: 1;
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 1024px) {
+    .viewToggle {
+        gap: 5px;
+        border-radius: 10px;
+    }
+
+    .viewToggleBtn {
+        padding: 6px 14px;
+        font-size: 11px;
+    }
+
+    .viewToggleBtn img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .viewToggle {
+        gap: 4px;
+        border-radius: 10px;
+        padding: 3px;
+    }
+
+    .viewToggleBtn {
+        padding: 5px 12px;
+        font-size: 10px;
+    }
+
+    .viewToggleBtn img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 425px) {
+    .viewToggle {
+        gap: 3px;
+        border-radius: 8px;
+        padding: 2px;
+    }
+
+    .viewToggleBtn {
+        padding: 4px 10px;
+        font-size: 9px;
+    }
+
+    .viewToggleBtn img {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .viewToggleBtn {
+        padding: 3px 8px;
+        font-size: 8px;
+    }
+
+    .viewToggleBtn img {
+        width: 11px;
+        height: 11px;
+    }
+}
+
+@keyframes toggleFlip {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.viewToggleBtn.active {
+    animation: toggleFlip 0.2s ease;
+}

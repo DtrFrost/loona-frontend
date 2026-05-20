@@ -1,0 +1,561 @@
+/* Price.module.css */
+
+/* ========== ДЕСКТОП (основные стили, больше 1024px) ========== */
+.pricePage {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.priceHeader {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #DDDDDD;
+}
+
+.priceHeader h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    background: #DDDDDD;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.priceHeader p {
+    font-size: 18px;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tariffsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tariffCard {
+    position: relative;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.tariffCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--card-color);
+}
+
+.popular {
+    transform: scale(1.05);
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popular:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #FFD700, #FFA000);
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tariffHeader {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.tariffHeader h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #DDDDDD;
+}
+
+.tariffPrice {
+    margin-bottom: 15px;
+}
+
+.free {
+    font-size: 28px;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.price {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+}
+
+.currency {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    margin-left: 2px;
+}
+
+.period {
+    font-size: 14px;
+    color: #AAAAAA;
+    margin-left: 5px;
+}
+
+.tariffStorage {
+    font-size: 14px;
+    color: #BBBBBB;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.tariffFeatures {
+    flex: 1;
+    margin-bottom: 25px;
+}
+
+.tariffFeatures ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tariffFeatures li {
+    padding: 8px 0;
+    color: #DDDDDD;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tariffFeatures li:last-child {
+    border-bottom: none;
+}
+
+.tariffButton {
+    margin-top: auto;
+}
+
+/* Кнопки */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnFree {
+    background: rgba(255, 255, 255, 0.2);
+    color: #DDDDDD;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btnFree:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btnBuy {
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.btnBuy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btnBuy:hover::before {
+    left: 100%;
+}
+
+.btnBuy:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btnPurchased {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.8;
+    border: none;
+}
+
+.btnPurchased:hover {
+    transform: none;
+    filter: none;
+}
+
+.btnPurchased::before {
+    display: none;
+}
+
+/* Модальное окно */
+.tariffModal {
+    background: rgba(30, 30, 40, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px;
+    min-width: 350px;
+    text-align: center;
+    color: #DDDDDD;
+}
+
+.modalIcon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.tariffModal h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #FF9800;
+}
+
+.tariffModal p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.tariffModal strong {
+    color: #37B6CE;
+}
+
+.modalNote {
+    font-size: 14px;
+    color: #AAAAAA;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.modalCloseBtn {
+    background: linear-gradient(135deg, #37B6CE, #2a8ca0);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modalCloseBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(55, 182, 206, 0.4);
+}
+
+/* ========== ПЛАНШЕТ (1024px и меньше) ========== */
+@media (max-width: 1024px) {
+    .pricePage {
+        padding: 30px 15px;
+    }
+
+    .priceHeader {
+        margin-bottom: 40px;
+    }
+
+    .priceHeader h1 {
+        font-size: 40px;
+    }
+
+    .priceHeader p {
+        font-size: 16px;
+    }
+
+    .tariffsContainer {
+        gap: 25px;
+    }
+
+    .tariffCard {
+        width: 300px;
+        padding: 25px 20px;
+    }
+
+    .tariffHeader h2 {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 42px;
+    }
+
+    .free {
+        font-size: 24px;
+    }
+}
+
+/* ========== ПЛАНШЕТ ВЕРТИКАЛЬНО (768px и меньше) ========== */
+@media (max-width: 768px) {
+    .pricePage {
+        padding: 20px 15px;
+        min-height: calc(100vh - 150px);
+    }
+
+    .priceHeader {
+        margin-bottom: 30px;
+    }
+
+    .priceHeader h1 {
+        font-size: 32px;
+    }
+
+    .priceHeader p {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .tariffsContainer {
+        gap: 20px;
+    }
+
+    .tariffCard {
+        width: 100%;
+        max-width: 380px;
+        padding: 20px;
+    }
+
+    /* На планшете убираем масштабирование популярного тарифа */
+    .popular {
+        transform: scale(1);
+    }
+
+    .popular:hover {
+        transform: translateY(-10px);
+    }
+
+    .tariffHeader h2 {
+        font-size: 22px;
+    }
+
+    .tariffPrice {
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 36px;
+    }
+
+    .currency {
+        font-size: 20px;
+    }
+
+    .free {
+        font-size: 22px;
+    }
+
+    .tariffStorage {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .tariffFeatures li {
+        font-size: 13px;
+        padding: 6px 0;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Модальное окно */
+    .tariffModal {
+        min-width: 280px;
+        padding: 25px;
+        margin: 0 15px;
+    }
+
+    .tariffModal h3 {
+        font-size: 24px;
+    }
+
+    .tariffModal p {
+        font-size: 14px;
+    }
+
+    .modalNote {
+        font-size: 12px;
+    }
+
+    .modalCloseBtn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}
+
+/* ========== ТЕЛЕФОН (425px и меньше) ========== */
+@media (max-width: 425px) {
+    .pricePage {
+        padding: 15px 10px;
+    }
+
+    .priceHeader {
+        margin-bottom: 25px;
+    }
+
+    .priceHeader h1 {
+        font-size: 26px;
+    }
+
+    .priceHeader p {
+        font-size: 12px;
+    }
+
+    .tariffsContainer {
+        gap: 16px;
+    }
+
+    .tariffCard {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .popularBadge {
+        font-size: 10px;
+        padding: 4px 12px;
+        white-space: nowrap;
+    }
+
+    .tariffHeader {
+        margin-bottom: 16px;
+    }
+
+    .tariffHeader h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .tariffPrice {
+        margin-bottom: 8px;
+    }
+
+    .price {
+        font-size: 32px;
+    }
+
+    .currency {
+        font-size: 18px;
+    }
+
+    .period {
+        font-size: 12px;
+    }
+
+    .free {
+        font-size: 20px;
+    }
+
+    .tariffStorage {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    .tariffFeatures {
+        margin-bottom: 16px;
+    }
+
+    .tariffFeatures li {
+        font-size: 12px;
+        padding: 5px 0;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+
+    /* Модальное окно */
+    .tariffModal {
+        min-width: auto;
+        width: calc(100% - 30px);
+        padding: 20px;
+    }
+
+    .modalIcon {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .tariffModal h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .tariffModal p {
+        font-size: 13px;
+    }
+
+    .modalNote {
+        font-size: 11px;
+        padding: 8px;
+        margin: 15px 0;
+    }
+
+    .modalCloseBtn {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+}
+
+/* Для очень маленьких экранов (375px и меньше) */
+@media (max-width: 375px) {
+    .priceHeader h1 {
+        font-size: 24px;
+    }
+
+    .tariffCard {
+        padding: 14px;
+    }
+
+    .tariffHeader h2 {
+        font-size: 18px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .free {
+        font-size: 18px;
+    }
+}

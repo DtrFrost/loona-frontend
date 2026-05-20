@@ -1,0 +1,102 @@
+.create-folder-modal {
+    background: rgba(30, 30, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 25px;
+    min-width: 380px;
+    color: #DDDDDD;
+}
+
+.create-folder-modal h2 {
+    margin-bottom: 10px;
+    color: #37B6CE;
+    font-size: 22px;
+}
+
+.modal-path {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.create-folder-modal input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #DDDDDD;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.create-folder-modal input:focus {
+    border-color: #37B6CE;
+    box-shadow: 0 0 10px rgba(55, 182, 206, 0.3);
+}
+
+.create-folder-modal input.error {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.error-message {
+    display: block;
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.create-btn {
+    background: linear-gradient(135deg, #37B6CE, #2a8ca0);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.create-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(55, 182, 206, 0.4);
+}
+
+.create-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #DDDDDD;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .create-folder-modal {
+        min-width: 300px;
+        padding: 20px;
+    }
+}

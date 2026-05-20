@@ -1,0 +1,515 @@
+.adminDashboard {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.statsSection {
+    padding: 24px;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statsSection h2 {
+    margin: 0 0 20px 0;
+    color: #DDDDDD;
+    font-size: 20px;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    transition: transform 0.2s;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+}
+
+.statIcon {
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.statIcon img {
+    width: 36px;
+    height: 36px;
+}
+
+.statInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.statValue {
+    font-size: 24px;
+    font-weight: bold;
+    color: #39BAD1;
+    word-break: break-word;
+}
+
+.statLabel {
+    font-size: 13px;
+    color: #DDDDDD;
+    margin-top: 4px;
+}
+
+.recentUsers {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.recentUsers h3 {
+    margin-bottom: 12px;
+    color: #DDDDDD;
+    font-size: 16px;
+}
+
+.recentUsersList {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.recentUserItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+}
+
+.recentUserName {
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.recentUserEmail {
+    color: #DDDDDD;
+}
+
+.recentUserDate {
+    color: #c2c2c2;
+    font-size: 12px;
+}
+
+.usersSection {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-top: 30px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.usersSection h2 {
+    margin: 0 0 16px 0;
+    color: #DDDDDD;
+    font-size: 20px;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+    margin: 0 -8px;
+    padding: 0 8px;
+}
+
+.usersTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 600px;
+}
+
+.usersTable th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 600;
+    color: #DDDDDD;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+.usersTable td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+    color: #DDDDDD;
+}
+
+.usersTable tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.roleSelect {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+}
+
+.roleAdmin {
+    background: #ffd0d1;
+    border-color: #4E0001;
+    color: #4E0001;
+}
+
+.roleUser {
+    background: #ffffff;
+    border-color: #39BAD1;
+    color: #39BAD1;
+}
+
+.roleSelect:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.deleteBtn:hover:not(:disabled) {
+    background: #e10f00;
+    transform: scale(1.05);
+}
+
+.deleteBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.deleteBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.adminLoading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top: 3px solid #39BAD1;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.adminError {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin: 40px auto;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+}
+
+.adminError h2 {
+    color: #f44336;
+    margin-bottom: 16px;
+}
+
+.retryBtn {
+    margin-top: 16px;
+    padding: 8px 20px;
+    background: #39BAD1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.retryBtn:hover {
+    background: #2c9bb0;
+}
+
+@media (max-width: 1024px) {
+    .adminDashboard {
+        padding: 16px;
+        margin: 10px auto;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .usersTable {
+        font-size: 12px;
+    }
+
+    .usersTable th,
+    .usersTable td {
+        padding: 6px 10px;
+    }
+
+    .statValue {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .adminDashboard {
+        padding: 12px;
+    }
+
+    .statsSection {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .statsSection h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .statCard {
+        padding: 12px;
+    }
+
+    .statIcon img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .statValue {
+        font-size: 18px;
+    }
+
+    .statLabel {
+        font-size: 12px;
+    }
+
+    .recentUsers h3 {
+        font-size: 14px;
+    }
+
+    .recentUsersList {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .recentUserItem {
+        width: 100%;
+        justify-content: space-between;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .recentUserDate {
+        font-size: 10px;
+    }
+
+    .usersSection {
+        padding: 16px;
+        margin-top: 20px;
+        border-radius: 20px;
+    }
+
+    .usersSection h2 {
+        font-size: 18px;
+    }
+
+    .usersTable {
+        font-size: 11px;
+        min-width: 550px;
+    }
+
+    .usersTable th,
+    .usersTable td {
+        padding: 6px 8px;
+    }
+
+    .roleSelect {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+
+    .deleteBtn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .deleteBtn img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 425px) {
+    .adminDashboard {
+        padding: 8px;
+    }
+
+    .statsSection {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .statsSection h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .statCard {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .statIcon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .statValue {
+        font-size: 16px;
+    }
+
+    .statLabel {
+        font-size: 11px;
+    }
+
+    .recentUserItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .recentUserEmail {
+        font-size: 11px;
+    }
+
+    .usersSection {
+        padding: 12px;
+        margin-top: 16px;
+    }
+
+    .usersSection h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .usersTable {
+        font-size: 10px;
+        min-width: 480px;
+    }
+
+    .usersTable th,
+    .usersTable td {
+        padding: 5px 6px;
+    }
+
+    .roleSelect {
+        padding: 2px 4px;
+        font-size: 9px;
+    }
+
+    .adminError {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .adminError h2 {
+        font-size: 18px;
+    }
+
+    .adminError p {
+        font-size: 13px;
+    }
+
+    .retryBtn {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .adminDashboard {
+        padding: 6px;
+    }
+
+    .statsSection {
+        padding: 10px;
+    }
+
+    .statValue {
+        font-size: 14px;
+    }
+
+    .statLabel {
+        font-size: 10px;
+    }
+
+    .usersTable {
+        min-width: 420px;
+        font-size: 9px;
+    }
+
+    .usersTable th,
+    .usersTable td {
+        padding: 4px;
+    }
+}

@@ -1,0 +1,253 @@
+/* MediaPreview.module.css */
+
+/* ========== ДЕСКТОП (основные стили, больше 1024px) ========== */
+.mediaPreview {
+    width: 100%;
+    height: 120px; /* ФИКСИРОВАННАЯ ВЫСОТА */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0; /* Чтобы не сжимался */
+}
+
+.mediaPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Стили для изображений */
+.imagePreview {
+    width: 100%;
+    height: 100%;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Стили для видео превью */
+.videoPreview {
+    cursor: pointer;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.videoThumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.videoOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.videoPreview:hover .videoOverlay {
+    opacity: 1;
+}
+
+.playIcon {
+    font-size: 32px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.videoPreview:hover .playIcon {
+    transform: scale(1.1);
+}
+
+/* Состояния ошибки и загрузки */
+.error {
+    background: rgba(255, 68, 68, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 32px;
+}
+
+.error .fileExt {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ff6666;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.loading {
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 24px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Контейнер для превью в карточке */
+.previewContainer {
+    position: relative;
+    width: 100%;
+    height: 120px; /* ФИКСИРОВАННАЯ ВЫСОТА, совпадает с mediaPreview */
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+/* ========== ПЛАНШЕТ (1024px и меньше) ========== */
+@media (max-width: 1024px) {
+    .mediaPreview {
+        height: 110px;
+    }
+    
+    .previewContainer {
+        height: 110px;
+    }
+
+    .playIcon {
+        width: 42px;
+        height: 42px;
+        font-size: 28px;
+    }
+
+    .error {
+        font-size: 28px;
+    }
+}
+
+/* ========== ПЛАНШЕТ ВЕРТИКАЛЬНО (768px и меньше) ========== */
+@media (max-width: 768px) {
+    .mediaPreview {
+        height: 100px;
+        border-radius: 6px;
+    }
+    
+    .previewContainer {
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .playIcon {
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+
+    .error {
+        font-size: 24px;
+    }
+
+    .error .fileExt {
+        font-size: 10px;
+    }
+
+    .loading {
+        font-size: 20px;
+    }
+}
+
+/* ========== ТЕЛЕФОН (425px и меньше) ========== */
+@media (max-width: 425px) {
+    .mediaPreview {
+        height: 85px;
+        border-radius: 6px;
+    }
+    
+    .previewContainer {
+        height: 85px;
+        margin-bottom: 8px;
+    }
+
+    .playIcon {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+
+    .error {
+        font-size: 20px;
+        gap: 4px;
+    }
+
+    .error .fileExt {
+        font-size: 9px;
+    }
+
+    .loading {
+        font-size: 18px;
+    }
+}
+
+/* Для очень маленьких экранов (375px и меньше) */
+@media (max-width: 375px) {
+    .mediaPreview {
+        height: 75px;
+    }
+    
+    .previewContainer {
+        height: 75px;
+        margin-bottom: 6px;
+    }
+
+    .playIcon {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .error {
+        font-size: 18px;
+    }
+
+    .loading {
+        font-size: 16px;
+    }
+}
+
+/* Анимации */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.mediaPreview {
+    animation: fadeIn 0.2s ease;
+}

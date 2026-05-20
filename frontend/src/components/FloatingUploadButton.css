@@ -1,0 +1,96 @@
+.floating-upload-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-upload-btn:hover {
+    transform: scale(1.1);
+}
+
+.floating-upload-btn.uploading {
+    cursor: not-allowed;
+    transform: none;
+}
+
+.floating-upload-btn.uploading:hover {
+    transform: none;
+}
+
+.upload-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.upload-spinner-small {
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.tooltip {
+    position: absolute;
+    right: 65px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: #DDDDDD;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.floating-upload-btn.hovered .tooltip {
+    opacity: 1;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .floating-upload-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .upload-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .tooltip {
+        right: 60px;
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}

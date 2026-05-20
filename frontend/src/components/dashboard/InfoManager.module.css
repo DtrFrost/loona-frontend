@@ -1,0 +1,307 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  min-height: 87px;
+  color: #DDDDDD;
+  margin-bottom: 20px;
+}
+
+.weightBlock {
+  flex: 2;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 27px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  padding: 15px;
+}
+
+.weightText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.weightText h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.weightText span {
+  font-size: 14px;
+  color: #37B6CE;
+  font-weight: 500;
+}
+
+.weightLine {
+  height: 18px;
+  width: 100%;
+  background: #787878;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.weightLineFill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(53, 179, 203, 1) 0%, rgba(4, 133, 157, 1) 100%);
+  border-radius: 12px;
+  transition: width 0.3s ease;
+}
+
+.folderBlock {
+  flex-shrink: 0;
+  width: 130px;
+  height: 100%;
+  min-height: 87px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 27px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.folderBlock:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.folderBlock img {
+  width: 24px;
+  height: 24px;
+}
+
+.infoBlock {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 27px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.infoContent {
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+  color: #37B6CE;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    gap: 12px;
+  }
+
+  .weightBlock {
+    flex: 2;
+  }
+
+  .weightText h2 {
+    font-size: 14px;
+  }
+
+  .weightText span {
+    font-size: 12px;
+  }
+
+  .folderBlock {
+    width: 110px;
+    min-height: 87px;
+    font-size: 12px;
+  }
+
+  .folderBlock img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .infoContent {
+    font-size: 11px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 12px;
+    min-height: auto;
+  }
+
+  .weightBlock {
+    width: 100%;
+    flex: none;
+    padding: 12px 15px;
+  }
+
+  .weightText {
+    gap: 15px;
+  }
+
+  .weightText h2 {
+    font-size: 14px;
+  }
+
+  .weightText span {
+    font-size: 13px;
+  }
+
+  .weightLine {
+    height: 14px;
+  }
+
+  .folderBlock {
+    width: 100%;
+    min-height: 70px;
+    flex-direction: row;
+    gap: 15px;
+    padding: 12px;
+  }
+
+  .folderBlock span {
+    order: 1;
+  }
+
+  .folderBlock img {
+    order: 2;
+    width: 22px;
+    height: 22px;
+  }
+
+  .infoBlock {
+    width: 100%;
+    flex: none;
+  }
+
+  .infoContent {
+    font-size: 12px;
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .weightBlock {
+    padding: 10px 12px;
+  }
+
+  .weightText {
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .weightText h2 {
+    font-size: 13px;
+  }
+
+  .weightText span {
+    font-size: 12px;
+  }
+
+  .weightLine {
+    height: 12px;
+  }
+
+  .folderBlock {
+    min-height: 60px;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .folderBlock img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .infoContent {
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .weightText h2 {
+    font-size: 12px;
+  }
+
+  .weightText span {
+    font-size: 11px;
+  }
+
+  .folderBlock {
+    min-height: 55px;
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .folderBlock img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .infoContent {
+    font-size: 10px;
+  }
+}
+
+@keyframes folderBlockPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.98);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.folderBlock:active {
+  animation: folderBlockPulse 0.2s ease;
+}

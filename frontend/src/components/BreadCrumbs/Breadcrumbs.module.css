@@ -1,0 +1,206 @@
+.breadcrumbsContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.breadcrumbsBack {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: #DDDDDD;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.breadcrumbsBack:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #39BAD1;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.breadcrumbsBack.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.breadcrumbsItems {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.breadcrumbItem {
+  background: none;
+  border: none;
+  color: #DDDDDD;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  backdrop-filter: none;
+  box-shadow: none;
+  font-family: inherit;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.breadcrumbItem:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #39BAD1;
+}
+
+.breadcrumbItem.active {
+  color: #39BAD1;
+  font-weight: 700;
+  cursor: default;
+  background: transparent;
+}
+
+.breadcrumbsSeparator {
+  color: rgba(221, 221, 221, 0.5);
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .breadcrumbsContainer {
+    gap: 10px;
+  }
+
+  .breadcrumbsBack {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .breadcrumbItem {
+    font-size: 12px;
+    padding: 3px 6px;
+    max-width: 130px;
+  }
+
+  .breadcrumbsSeparator {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumbsContainer {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .breadcrumbsBack {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .breadcrumbsItems {
+    gap: 4px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+    padding-bottom: 2px;
+  }
+
+  .breadcrumbsItems::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .breadcrumbsItems::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .breadcrumbsItems::-webkit-scrollbar-thumb {
+    background: rgba(57, 186, 209, 0.5);
+    border-radius: 3px;
+  }
+
+  .breadcrumbItem {
+    font-size: 11px;
+    padding: 3px 5px;
+    white-space: nowrap;
+    max-width: 120px;
+  }
+
+  .breadcrumbItem:not(.active) {
+    max-width: 100px;
+  }
+
+  .breadcrumbsSeparator {
+    font-size: 10px;
+    margin: 0 1px;
+  }
+}
+
+@media (max-width: 425px) {
+  .breadcrumbsContainer {
+    gap: 6px;
+  }
+
+  .breadcrumbsBack {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .breadcrumbItem {
+    font-size: 10px;
+    padding: 2px 4px;
+    max-width: 90px;
+  }
+
+  .breadcrumbItem:not(.active) {
+    max-width: 80px;
+  }
+
+  .breadcrumbItem.active {
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .breadcrumbsSeparator {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 375px) {
+  .breadcrumbItem {
+    font-size: 9px;
+    max-width: 70px;
+  }
+
+  .breadcrumbItem:not(.active) {
+    max-width: 60px;
+  }
+
+  .breadcrumbsBack {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+}

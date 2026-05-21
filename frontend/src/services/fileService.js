@@ -1,4 +1,4 @@
-import API_BASE_URL from '../../config/api'
+import API_BASE_URL from '../config/api';
 
 const getToken = () => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');

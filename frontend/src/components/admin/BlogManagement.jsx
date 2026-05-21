@@ -23,7 +23,7 @@ export default function BlogManagement() {
     const fetchPosts = async () => {
         try {
             const token = getToken();
-            const response = await fetch(`${API_BASE_URL}/blog/posts/admin/posts`, {
+            const response = await fetch(`${API_BASE_URL}/blog/admin/posts`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './BlogManagement.module.css';
-import API_BASE_URL from './config/api';
+import API_BASE_URL from '../config/api';
 
 export default function BlogManagement() {
     const [posts, setPosts] = useState([]);

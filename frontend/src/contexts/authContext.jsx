@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
+import API_BASE_URL from './config/api';
+
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
@@ -13,10 +15,8 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const checkAuth = async () => {
-        // Сначала проверяем localStorage (запомнить меня)
         let token = localStorage.getItem('token');
         
-        // Если нет, проверяем sessionStorage
         if (!token) {
             token = sessionStorage.getItem('token');
         }
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/me', {
+            const response = await fetch(`${API_BASE_URL}/auth/me`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
                 console.log('✅ Пользователь авторизован:', userData.name, 'Роль:', userData.role);
                 setUser(userData);
             } else {
-                // Очищаем оба хранилища при невалидном токене
                 localStorage.removeItem('token');
                 sessionStorage.removeItem('token');
                 console.log('❌ Токен невалиден, очищаем');
@@ -54,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password, rememberMe = false) => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -103,7 +102,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, password) => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password })
@@ -145,7 +144,6 @@ export const AuthProvider = ({ children }) => {
         console.log('👋 Выход выполнен');
     };
 
-    // Добавляем функцию принудительной проверки
     const refreshAuth = () => {
         checkAuth();
     };

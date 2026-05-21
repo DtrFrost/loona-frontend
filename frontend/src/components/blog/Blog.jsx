@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Blog.module.css';
+import API_BASE_URL from './config/api';
+
 
 export default function Blog() {
     const [posts, setPosts] = useState([]);
@@ -11,7 +13,7 @@ export default function Blog() {
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/blog/posts');
+            const response = await fetch(`${API_BASE_URL}/blog/posts`);
             if (response.ok) {
                 const data = await response.json();
                 setPosts(data.posts);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './BlogManagement.module.css';
+import API_BASE_URL from './config/api';
 
 export default function BlogManagement() {
     const [posts, setPosts] = useState([]);
@@ -22,7 +23,7 @@ export default function BlogManagement() {
     const fetchPosts = async () => {
         try {
             const token = getToken();
-            const response = await fetch('http://localhost:5000/api/blog/admin/posts', {
+            const response = await fetch(`${API_BASE_URL}/blog/posts/admin/posts`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -45,8 +46,8 @@ export default function BlogManagement() {
         try {
             const token = getToken();
             const url = editingPost 
-                ? `http://localhost:5000/api/blog/admin/posts/${editingPost.id}`
-                : 'http://localhost:5000/api/blog/admin/posts';
+                ? `${API_BASE_URL}/blog/admin/posts/${editingPost.id}`
+                : `${API_BASE_URL}/blog/admin/posts`;
             
             const method = editingPost ? 'PUT' : 'POST';
             
@@ -81,7 +82,7 @@ export default function BlogManagement() {
         
         try {
             const token = getToken();
-            const response = await fetch(`http://localhost:5000/api/blog/admin/posts/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/blog/admin/posts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

@@ -9,6 +9,8 @@ import Weight from '../assets/icons/weight.svg';
 import Delete from '../assets/icons/delete.svg';
 import Analit from '../assets/icons/analit.svg';
 
+import API_BASE_URL from './config/api';
+
 export default function AdminDashboard() {
     const { user } = useAuth();
     const [users, setUsers] = useState([]);
@@ -32,7 +34,7 @@ export default function AdminDashboard() {
         try {
             const token = getToken();
 
-            const usersResponse = await fetch('http://localhost:5000/api/admin/users', {
+            const usersResponse = await fetch(`${API_BASE_URL}/admin/users`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -51,7 +53,7 @@ export default function AdminDashboard() {
             ).slice(0, 3);
             setRecentUsers(recent);
 
-            const statsResponse = await fetch('http://localhost:5000/api/admin/storage-stats', {
+            const statsResponse = await fetch(`${API_BASE_URL}/admin/storage-stats`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -77,7 +79,7 @@ export default function AdminDashboard() {
         try {
             const token = getToken();
 
-            const response = await fetch(`http://localhost:5000/api/admin/users/${userId}/role`, {
+            const response = await fetch(`${API_BASE_URL}/admin/users/${userId}/role`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +108,7 @@ export default function AdminDashboard() {
         try {
             const token = getToken();
 
-            const response = await fetch(`http://localhost:5000/api/admin/users/${userId}`, {
+            const response = await fetch(`${API_BASE_URL}/admin/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

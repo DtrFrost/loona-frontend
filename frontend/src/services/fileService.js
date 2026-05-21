@@ -1,7 +1,5 @@
-// fileService.js
-const API_URL = 'http://localhost:5000/api';
+import API_BASE_URL from './config/api'
 
-// ИСПРАВЛЕНО: получаем токен из обоих хранилищ
 const getToken = () => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     console.log('getToken вернул:', token ? 'токен есть' : 'НЕТ ТОКЕНА');
@@ -20,7 +18,7 @@ const authFetch = async (url, options = {}) => {
         headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_URL}${url}`, {
+    const response = await fetch(`${API_BASE_URL}${url}`, {
         ...options,
         headers
     });
@@ -41,17 +39,14 @@ const authFetch = async (url, options = {}) => {
 };
 
 export const fileService = {
-    // Получить файлы
     getFiles: async (path = '/') => {
         return authFetch(`/files?path=${encodeURIComponent(path)}`);
     },
 
-    // Получить статистику
     getStats: async () => {
         return authFetch('/storage/stats');
     },
 
-    // Создать папку
     createFolder: async (name, path = '/') => {
         return authFetch('/files/folders', {
             method: 'POST',
@@ -59,14 +54,13 @@ export const fileService = {
         });
     },
 
-    // Загрузить файл
     uploadFile: async (file, path = '/') => {
         const token = getToken();
         const formData = new FormData();
         formData.append('file', file);
         formData.append('path', path);
 
-        const response = await fetch(`${API_URL}/files/upload`, {
+        const response = await fetch(`${API_BASE_URL}/files/upload`, {
             method: 'POST',
             headers: {
                 'Authorization': token ? `Bearer ${token}` : ''
@@ -100,7 +94,7 @@ export const fileService = {
     downloadFile: async (id, fileName) => {
         const token = getToken();
 
-        const response = await fetch(`${API_URL}/files/download/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/files/download/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': token ? `Bearer ${token}` : ''
@@ -134,7 +128,7 @@ export const fileService = {
     downloadMultiple: async (ids) => {
         const token = getToken();
 
-        const response = await fetch(`${API_URL}/files/download-multiple`, {
+        const response = await fetch(`${API_BASE_URL}/files/download-multiple`, {
             method: 'POST',
             headers: {
                 'Authorization': token ? `Bearer ${token}` : '',
@@ -166,7 +160,6 @@ export const fileService = {
         window.URL.revokeObjectURL(url);
     },
 
-    // Получить вес папки (суммарный размер всех файлов внутри)
     getFolderSize: async (folderPath) => {
         try {
             // Нормализуем путь
@@ -179,7 +172,7 @@ export const fileService = {
             }
 
             const token = getToken();
-            const response = await fetch(`${API_URL}/files/folder-size?path=${encodeURIComponent(normalizedPath)}`, {
+            const response = await fetch(`${API_BASE_URL}/files/folder-size?path=${encodeURIComponent(normalizedPath)}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': token ? `Bearer ${token}` : ''
@@ -210,7 +203,7 @@ export const fileService = {
     getPreview: async (fileId) => {
         const token = getToken();
 
-        const response = await fetch(`${API_URL}/files/preview/${fileId}`, {
+        const response = await fetch(`${API_BASE_URL}/files/preview/${fileId}`, {
             method: 'GET',
             headers: {
                 'Authorization': token ? `Bearer ${token}` : ''
@@ -231,8 +224,6 @@ export const fileService = {
 
         const blob = await response.blob();
 
-        // Проверяем, что получили изображение
-        // Проверяем, что получили медиа файл (изображение или видео)
         if (!blob.type.startsWith('image/') && !blob.type.startsWith('video/')) {
             console.warn('Сервер вернул не медиа файл, а:', blob.type);
             throw new Error('Неверный формат медиа');

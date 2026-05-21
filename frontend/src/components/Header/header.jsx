@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./header.css";
 import { useAuth } from "../../contexts/authContext";
+import logoSvg from '/public/logo.svg';
 
 export default function Header() {
   const { isAuthenticated, user, logout, loading } = useAuth();
@@ -18,7 +19,6 @@ export default function Header() {
     setMenuOpen(!menuOpen);
   };
 
-  // Закрытие меню при изменении размера окна (если стало больше 768px)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768 && menuOpen) {
@@ -30,7 +30,6 @@ export default function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, [menuOpen]);
 
-  // Блокировка скролла при открытом меню
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -49,7 +48,7 @@ export default function Header() {
       <header>
         <div className="header__logo">
           <NavLink to="/" id="logo">
-            <img src="/logo.svg" alt="logo" />
+            <img src={logoSvg} alt="logo" />
             <h3>Луна</h3>
           </NavLink>
         </div>
@@ -75,19 +74,17 @@ export default function Header() {
     <header>
       <div className="header__logo">
         <NavLink to={isAdmin ? "/admin" : "/"} id="logo" onClick={() => setMenuOpen(false)}>
-          <img src="/logo.svg" alt="logo" />
+          <img src={logoSvg} alt="logo" />
           <h3>Луна</h3>
         </NavLink>
       </div>
 
-      {/* Добавляем класс active для анимации гамбургера */}
       <div className={`header__hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      {/* Используем класс active вместо id */}
       <nav className={`glass ${menuOpen ? 'active' : ''}`}>
         {!isAuthenticated && (
           <>

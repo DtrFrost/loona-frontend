@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./header.css";
 import { useAuth } from "../../contexts/authContext";
-import logoSvg from '/src/public/logo.svg';
-
+import logoSvg from '/public/logo.svg';
 
 export default function Header() {
   const { isAuthenticated, user, logout, loading } = useAuth();

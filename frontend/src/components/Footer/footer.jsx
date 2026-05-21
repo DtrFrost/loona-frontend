@@ -1,8 +1,8 @@
 import styles from './Footer.module.css'
-import ComLogo from '/src/public/ComLogo.svg';
-import Tg from '/src/public/logo-tg.svg';
-import Vk from '/src/public/vk-logo.svg';
-import Github from '/src/public/github-logo.svg';
+import ComLogo from '/public/ComLogo.svg';
+import Tg from '/public/logo-tg.svg';
+import Vk from '/public/vk-logo.svg';
+import Github from '/public/github-logo.svg';
 
 export default function Footer() {
     return (

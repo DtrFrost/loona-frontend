@@ -6,7 +6,7 @@ import Footer from './components/Footer/footer';
 import Authorisation from './components/registration/authorisathion';
 import About from './components/about/about';
 import Dashboard from './components/dashboard/dashboard';
-import AdminLayout from './admin/AdminLayout/AdminLayout';
+// import AdminLayout from './admin/AdminLayout/AdminLayout';
 import NotFound from './components/NotFound/NotFound';
 import Price from './components/price/Price';
 import Blog from './components/blog/Blog';
@@ -124,13 +124,13 @@ function AppRoutes() {
               </PrivateRoute>
             } />
 
-            <Route path='/admin-layout' element={
+            {/* <Route path='/admin-layout' element={
               <PrivateRoute>
                 <AdminRoute>
                   <AdminLayout />
                 </AdminRoute>
               </PrivateRoute>
-            } />
+            } /> */}
 
             {/* 404 - не найдено */}
             <Route path="*" element={<NotFound />} />

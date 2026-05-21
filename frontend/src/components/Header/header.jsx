@@ -4,6 +4,7 @@ import "./header.css";
 import { useAuth } from "../../contexts/authContext";
 import logoSvg from '/public/logo.svg';
 
+
 export default function Header() {
   const { isAuthenticated, user, logout, loading } = useAuth();
   const navigate = useNavigate();

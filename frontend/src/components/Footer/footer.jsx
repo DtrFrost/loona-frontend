@@ -1,4 +1,8 @@
 import styles from './Footer.module.css'
+import ComLogo from '/src/public/ComLogo.svg';
+import Tg from '/src/public/logo-tg.svg';
+import Vk from '/src/public/vk-logo.svg';
+import Github from '/src/public/github-logo.svg';
 
 export default function Footer() {
     return (
@@ -13,33 +17,17 @@ export default function Footer() {
             </div>
             <div className={styles.links}>
                 <div className={styles.el}>
-                    <img 
-                        src="/ComLogo.svg" 
-                        alt="companyLogo" 
-                        className={styles.logoIcon}
-                    />
+                    <img src={ComLogo} alt="logo" />
                 </div>
                 <div className={styles.el}>
                     <a href="https://t.me/dtrbublik">
-                        <img 
-                            src="/logo-tg.svg" 
-                            alt="Telegram" 
-                            className={styles.socialIcon}
-                        />
+                        <img src={Tg} alt="logo" />
                     </a>
                     <a href="https://vk.com/dtroriginal">
-                        <img 
-                            src="/vk-logo.svg" 
-                            alt="VK" 
-                            className={styles.socialIcon}
-                        />
+                        <img src={Vk} alt="logo" />
                     </a>
                     <a href="https://github.com/DtrFrost">
-                        <img 
-                            src="/github-logo.svg" 
-                            alt="GitHub" 
-                            className={styles.socialIcon}
-                        />
+                        <img src={Github} alt="logo" />
                     </a>
                 </div>
                 <div className={styles.info}>

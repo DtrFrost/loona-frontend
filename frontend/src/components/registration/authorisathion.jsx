@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import styles from './Authorisation.module.css';
 import Loona from '/src/assets/Loona.svg';
+import Google from '/src/assets/Google.svg';
 
 export default function Authorisation() {
     const [isLogin, setIsLogin] = useState(true);
@@ -335,7 +336,7 @@ export default function Authorisation() {
 
                             <div className={styles.orContent}>
                                 <button className={`${styles.btn} ${styles.btnGoogle}`}>
-                                    <img src="/src/assets/Google.svg" alt="google" />
+                                    <img src={Google} alt="logo" />
                                     {isLogin ? 'Войти через Google' : 'Зарегистрироваться через Google'}
                                 </button>
 

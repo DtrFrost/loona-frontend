@@ -9,7 +9,7 @@ import Weight from '../assets/icons/weight.svg';
 import Delete from '../assets/icons/delete.svg';
 import Analit from '../assets/icons/analit.svg';
 
-import API_BASE_URL from '../config/api';
+import API_BASE_URL from '../../config/api';
 
 export default function AdminDashboard() {
     const { user } = useAuth();
